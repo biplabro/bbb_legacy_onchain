@@ -1,5 +1,3 @@
-# bbb_legacy_onchain
-
 # BBB Legacy Onchain: A Digital Tribute
 
 ![alt text](./site.png)
