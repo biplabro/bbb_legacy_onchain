@@ -1,0 +1,706 @@
+/* =========================================================
+   BBB LEGACY — VERSION 88p + MODS (Corrected)
+   ---------------------------------------------------------
+   - REFACTOR: Unified navigation to an "app-style" layout.
+   - FIX: (Refined) Made the Research and Publications cards
+     flexible to fill a single row on desktop screens.
+   - NEW: Added the site logo to the top of the slide-in
+     navigation menu.
+   - FIX: Re-engineered the quote block with proper padding.
+   - NEW: Redesigned the footer to be a single, centered
+     column.
+   - FIX: Inverted footer logo color to be visible in both
+     light and dark modes.
+   ========================================================= */
+
+/* ... (sections 1-3 are unchanged) ... */
+
+/* ---------------------------
+   1. Design System: Tokens & Variables
+----------------------------*/
+:root {
+  --bg-canvas: #FDFCF9;
+  --bg-section: #F5F1E9;
+  --bg-surface: #FFFFFF;
+  --ink-heading: #402A24;
+  --ink-body: #5C4D48;
+  --ink-muted: #8C7D78;
+  --accent-gold: #D4A24E;
+  --accent-gold-deep: #B88A3D;
+  --accent-teal: #3A6B72;
+  --border-color: #EAE2D4;
+  --font-heading: 'Georgia', 'Times New Roman', serif;
+  --font-body: 'Roboto', system-ui, -apple-system, sans-serif;
+  --h1: clamp(2.4rem, 2.8vw + 1.5rem, 3.2rem);
+  --h2: clamp(1.8rem, 1.5vw + 1.2rem, 2.4rem);
+  --h3: clamp(1.2rem, 0.7vw + 1rem, 1.5rem);
+  --body-size: 1.05rem;
+  --line-height: 1.7;
+  --space-unit: 8px;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --max-width: 1280px;
+  --shadow-soft: 0 4px 12px rgba(64, 42, 36, 0.06);
+  --shadow-medium: 0 8px 24px rgba(64, 42, 36, 0.08);
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* ---------------------------
+   2. Base & Global Styles
+----------------------------*/
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  font-size: var(--body-size);
+  line-height: var(--line-height);
+  color: var(--ink-body);
+  background-color: var(--bg-canvas);
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  color: var(--ink-heading);
+  letter-spacing: .3px;
+  line-height: 1.2;
+}
+img { max-width: 100%; height: auto; vertical-align: middle; }
+.container { max-width: var(--max-width); margin: 0 auto; padding: 0 calc(var(--space-unit) * 3); }
+
+section a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+section a:hover {
+  color: var(--accent-gold-deep);
+}
+
+/* ---------------------------
+   3. Section & Layout Structure
+----------------------------*/
+section { padding: calc(var(--space-unit) * 10) 0; text-align: center; }
+#about, #journey, #awards { background-color: var(--bg-section); }
+#philosophy, #research, #publications, #Legacy, #tribute { background-color: var(--bg-canvas); }
+
+section h2 {
+  font-size: var(--h2);
+  margin-bottom: calc(var(--space-unit) * 6);
+  position: relative;
+  display: inline-block;
+}
+section h2::before {
+  content: '';
+  position: absolute;
+  bottom: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background-color: var(--accent-gold);
+  border-radius: 2px;
+}
+
+/* ... (section 4 is unchanged) ... */
+
+/* ---------------------------
+   4. Header & Navigation (App-Style Layout)
+----------------------------*/
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: rgba(253, 252, 249, 0.9);
+  backdrop-filter: saturate(180%) blur(5px);
+  border-bottom: 1px solid var(--border-color);
+  padding: calc(var(--space-unit) * 1.5) 0;
+  transition: box-shadow 0.2s ease-in-out;
+}
+.nav-content { display: flex; align-items: center; justify-content: space-between; height: 35px; }
+.nav-brand { display: flex; align-items: center; }
+.nav-brand img { max-height: 45px; width: auto; transition: max-height 0.3s ease; }
+
+.nav-links { display: none; list-style: none; }
+
+body.nav-open .nav-links {
+  display: flex; position: fixed; top: 0; right: 0; width: 80%; max-width: 320px; height: 100vh;
+  background: var(--bg-surface); flex-direction: column; justify-content: center; align-items: center;
+  gap: 2rem; transform: translateX(0); transition: transform 0.4s ease-in-out; box-shadow: var(--shadow-medium);
+  border-left: 1px solid var(--border-color); z-index: 1000; padding-top: 120px; justify-content: flex-start;
+}
+body.nav-open .nav-links::before {
+  content: ''; display: block; width: 180px; height: 45px;
+  background-image: url('./images/BBB-legacy-logo-big.png');
+  background-size: contain; background-repeat: no-repeat; background-position: center;
+  position: absolute; top: calc(var(--space-unit) * 7); left: 50%; transform: translateX(-50%);
+}
+.nav-links a {
+  text-decoration: none; color: var(--ink-body); font-weight: 500; font-size: 1.2rem;
+  padding: var(--space-unit) 0; position: relative; transition: var(--transition);
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px;
+  background-color: var(--accent-gold); transform: scaleX(0); transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--ink-heading); }
+.nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); transform-origin: bottom left; }
+
+.nav-toggle {
+  display: block; background: none; border: none; cursor: pointer;
+  padding: 10px; z-index: 1001;
+}
+.hamburger { display: block; position: relative; width: 24px; height: 2px; background: var(--ink-heading); transition: background .3s .3s; }
+.hamburger::before, .hamburger::after {
+  content: ''; position: absolute; width: 24px; height: 2px;
+  background: var(--ink-heading); transition: transform .3s, top .3s .3s, bottom .3s .3s;
+  left: 0;
+}
+.hamburger::before { top: -8px; }
+.hamburger::after { bottom: -8px; }
+body.nav-open .hamburger { background: transparent; }
+body.nav-open .hamburger::before { top: 0; transform: rotate(45deg); transition-delay: .3s; }
+body.nav-open .hamburger::after { bottom: 0; transform: rotate(-45deg); transition-delay: .3s; }
+
+/* ---------------------------
+   5. Hero Section to 7. Specific Section Styles
+----------------------------*/
+.hero { padding: calc(var(--space-unit) * 8) 0; overflow: hidden; }
+.hero-content { display: flex; align-items: center; justify-content: center; gap: calc(var(--space-unit) * 8); flex-wrap: wrap; }
+.hero-portrait { flex: 0 0 auto; position: relative; }
+.portrait { width: 250px; height: 250px; object-fit: cover; border-radius: 50%; border: 8px solid var(--bg-surface); box-shadow: var(--shadow-medium), 0 0 0 1px var(--border-color); transition: var(--transition); }
+.portrait:hover { transform: scale(1.03); box-shadow: var(--shadow-medium), 0 0 0 4px var(--accent-gold); }
+.hero-text { flex: 1; min-width: 320px; }
+.hero-text h1 { font-size: var(--h1); line-height: 1.1; margin-bottom: var(--space-unit); }
+.hero-text h2 { font-size: 1.25rem; color: var(--ink-muted); font-weight: 400; margin-bottom: calc(var(--space-unit) * 2); }
+.tagline { font-family: var(--font-body); font-weight: 500; font-size: 1.1rem; color: var(--ink-body); }
+.hero h1::before, .hero h1::after, .hero h2::before, .hero h2::after { display: none !important; content: none !important; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: calc(var(--space-unit) * 4); }
+
+
+/* === MODIFIED SECTION: Definitive 4-Column Research Card Layout for Desktop === */
+
+#research .cards {
+    display: grid;
+    gap: calc(var(--space-unit) * 4);
+    /* Mobile-first approach: Defaults to a single column for small screens. */
+    grid-template-columns: 1fr;
+}
+
+/* For tablets and medium screens, create a 2x2 symmetrical grid. */
+@media (min-width: 600px) {
+    #research .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* For desktops (992px and wider), enforce the 4-column single-row layout. */
+@media (min-width: 992px) {
+    #research .cards {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* === END OF MODIFIED SECTION === */
+
+
+.card { background: var(--bg-surface); border-radius: var(--radius); padding: calc(var(--space-unit) * 4); text-align: center; box-shadow: var(--shadow-soft); border: 1px solid var(--border-color); border-left: 5px solid var(--accent-teal); transition: var(--transition); }
+
+.card:hover { transform: translateY(-6px); box-shadow: var(--shadow-medium); }
+.card img { width: 64px; height: 64px; margin-bottom: var(--space-unit) * 2; object-fit: contain; }
+.card h3 { margin-bottom: var(--space-unit); font-size: var(--h3); }
+.card p { color: var(--ink-muted); line-height: 1.6; }
+#research .card { border-left-color: var(--accent-gold); }
+#publications .card { border-left-color: var(--accent-gold); }
+.stats .number { font-family: var(--font-heading); font-size: clamp(2.2rem, 1.8vw + 1.6rem, 2.8rem); color: var(--ink-heading); font-weight: 700; margin-bottom: 0; }
+.about-two-col { display: flex; gap: calc(var(--space-unit) * 6); align-items: flex-start; text-align: left; }
+.about-isi-img { border-radius: var(--radius); box-shadow: var(--shadow-soft); border: 1px solid var(--border-color); }
+.about-isi-caption { color: var(--ink-muted); font-size: .95rem; text-align: center; margin-top: var(--space-unit); font-style: italic; }
+
+.quote {
+  text-align: left; background: var(--bg-section); border-radius: var(--radius); padding: calc(var(--space-unit) * 6) calc(var(--space-unit) * 8);
+  position: relative; font-size: 1.1rem; font-style: italic; border: 1px solid var(--border-color); border-left: 5px solid var(--accent-gold);
+}
+.quote::before {
+  content: '“'; font-family: var(--font-heading); position: absolute; top: 25px; left: 20px;
+  font-size: 5rem; color: var(--border-color); z-index: 0; line-height: 1;
+}
+.quote::after {
+  content: '”'; font-family: var(--font-heading); position: absolute; bottom: 10px; right: 20px;
+  font-size: 5rem; color: var(--border-color); z-index: 0; line-height: 1;
+}
+.quote p, .quote cite { position: relative; z-index: 1; }
+.quote cite { display: block; margin-top: var(--space-unit) * 2; text-align: right; color: var(--ink-muted); font-style: normal; font-weight: 500; }
+
+#Legacy .quote { text-align: center; border-left: none; font-style: normal; }
+#Legacy .quote::before, #Legacy .quote::after { display: none; }
+
+.journey-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: calc(var(--space-unit) * 3); margin-bottom: calc(var(--space-unit) * 4); }
+.journey-card { background: var(--bg-surface); border-radius: var(--radius); padding: calc(var(--space-unit) * 3); box-shadow: var(--shadow-soft); text-align: center; transition: var(--transition); flex: 0 1 350px; border: 1px solid var(--border-color); }
+.journey-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-medium); }
+.journey-card h4 { margin: 0 0 4px; font-size: 1.1rem; }
+.journey-card small { color: var(--accent-gold-deep); display: block; margin-bottom: 6px; font-weight: 600; font-size: 0.9rem; }
+.journey-card p { margin: 0; line-height: 1.5; font-size: 1rem; }
+.timeline { position: relative; max-width: 800px; margin: 40px auto; }
+.timeline::after { content: ''; position: absolute; width: 3px; background-color: var(--border-color); top: 0; bottom: 0; left: 50%; margin-left: -1.5px; border-radius: 2px; }
+.timeline-item { padding: 10px 40px; position: relative; width: 50%; }
+.timeline-item::after { content: ''; position: absolute; width: 16px; height: 16px; right: -8px; background-color: var(--bg-surface); border: 4px solid var(--accent-gold); top: 24px; border-radius: 50%; z-index: 1; transition: var(--transition); }
+.timeline-item:hover::after { transform: scale(1.2); background-color: var(--accent-gold); }
+.timeline-item:nth-child(odd) { left: 0; text-align: right; }
+.timeline-item:nth-child(even) { left: 50%; text-align: left; }
+.timeline-item:nth-child(even)::after { left: -8px; }
+.timeline-year { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; color: var(--accent-gold-deep); margin-bottom: var(--space-unit); }
+.timeline-content { padding: calc(var(--space-unit) * 2); background-color: var(--bg-surface); position: relative; border-radius: var(--radius-sm); box-shadow: var(--shadow-soft); border: 1px solid var(--border-color); }
+.timeline-content h4 { font-size: 1.1rem; margin: 0; }
+
+/* ... (The rest of the file from section 8 onwards is unchanged) ... */
+
+/* =========================================================
+   8. Footer & Utility (CENTERED DESIGN - FINAL POLISHED)
+   ---------------------------------------------------------
+   - FIX: Corrected link styling and spacing issues.
+   - REFINED: Improved vertical rhythm and content flow.
+   - ROBUST: Ensured selectors override default browser styles.
+   ========================================================= */
+footer {
+  background: var(--ink-heading);
+  color: var(--ink-muted);
+  padding: calc(var(--space-unit) * 8) 0 calc(var(--space-unit) * 5);
+  text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(var(--space-unit) * 3);
+}
+
+.footer-logo img {
+  max-width: 200px;
+  filter: invert(1) brightness(1.5) contrast(1.1);
+}
+
+.footer-description {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  max-width: 550px;
+  margin: 0;
+}
+
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: calc(var(--space-unit) * 1.5) calc(var(--space-unit) * 3);
+  margin: calc(var(--space-unit) * 2) 0;
+}
+
+footer .footer-nav a,
+footer .footer-nav a:link,
+footer .footer-nav a:visited {
+  color: var(--bg-section);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+footer .footer-nav a:hover {
+  color: var(--accent-gold);
+}
+
+.footer-quote {
+  width: 100%;
+  max-width: 900px;
+  margin-top: calc(var(--space-unit) * 3);
+  padding-top: calc(var(--space-unit) * 5);
+  border-top: 1px solid #5C4D48;
+}
+
+.footer-quote blockquote {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: var(--bg-section);
+  margin: 0;
+}
+
+.footer-quote cite {
+  display: block;
+  margin-top: var(--space-unit) * 1.5;
+  font-style: normal;
+  font-size: 0.95rem;
+}
+
+.footer-bottom {
+  width: 100%;
+  margin-top: calc(var(--space-unit) * 4);
+  padding-top: calc(var(--space-unit) * 4);
+  border-top: 1px solid #5C4D48;
+}
+
+.footer-bottom small {
+  font-size: .92rem;
+}
+
+footer .footer-bottom a,
+footer .footer-bottom a:link,
+footer .footer-bottom a:visited {
+  color: var(--ink-muted);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+footer .footer-bottom a:hover {
+  color: var(--accent-gold);
+}
+
+.back-to-top {
+    position: fixed; bottom: 25px; right: 25px;
+    background: var(--accent-gold); color: var(--bg-surface);
+    width: 48px; height: 48px; border-radius: 50%;
+    text-align: center; line-height: 48px; font-size: 24px;
+    text-decoration: none; box-shadow: var(--shadow-medium);
+    opacity: 0; visibility: hidden; transform: translateY(20px);
+    transition: var(--transition); z-index: 999;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+.back-to-top:hover { background: var(--accent-gold-deep); transform: translateY(-4px); }
+
+/* =========================================
+   DARK MODE FOOTER STYLES (CENTERED - FINAL)
+   ========================================= */
+body.dark-mode footer {
+    background: #1c1817;
+    border-top: 1px solid var(--border-color);
+}
+body.dark-mode footer .footer-nav a,
+body.dark-mode footer .footer-nav a:link,
+body.dark-mode footer .footer-nav a:visited {
+    color: var(--ink-body);
+}
+body.dark-mode footer .footer-nav a:hover {
+    color: var(--accent-gold-deep);
+}
+body.dark-mode .footer-quote,
+body.dark-mode .footer-bottom {
+    border-top-color: var(--border-color);
+}
+body.dark-mode .footer-quote blockquote {
+    color: var(--ink-heading);
+}
+body.dark-mode footer .footer-bottom a,
+body.dark-mode footer .footer-bottom a:link,
+body.dark-mode footer .footer-bottom a:visited {
+    color: var(--ink-muted);
+}
+body.dark-mode footer .footer-bottom a:hover {
+    color: var(--accent-gold-deep);
+}
+/* =========================================================
+   APPENDED CODE FOR IMAGE GALLERY (FILMSTRIP SCROLLER)
+   ========================================================= */
+.gallery-container { margin-top: calc(var(--space-unit) * 10); }
+.gallery-title { font-size: var(--h2); margin-bottom: calc(var(--space-unit) * 6); position: relative; display: inline-block; }
+.gallery-title::before { content: ''; position: absolute; bottom: -16px; left: 50%; transform: translateX(-50%); width: 60px; height: 4px; background-color: var(--accent-gold); border-radius: 2px; }
+.gallery-scroller-wrapper { position: relative; max-width: 1100px; margin: 0 auto; }
+.gallery-scroller { overflow-x: auto; scroll-behavior: smooth; -ms-overflow-style: none; scrollbar-width: none; }
+.gallery-scroller::-webkit-scrollbar { display: none; }
+.gallery-nav-button {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 10;
+  background-color: rgba(255, 255, 255, 0.8); border: 1px solid var(--border-color);
+  color: var(--ink-body); width: 44px; height: 44px; border-radius: 50%;
+  cursor: pointer; font-size: 1.5rem; font-weight: bold; box-shadow: var(--shadow-soft);
+  transition: var(--transition); opacity: 0; visibility: hidden;
+}
+.gallery-nav-button.visible { opacity: 1; visibility: visible; }
+.gallery-nav-button:hover { background-color: white; border-color: var(--accent-gold); color: var(--accent-gold); }
+body.dark-mode .gallery-nav-button { background-color: rgba(53, 47, 45, 0.8); border-color: var(--border-color); color: var(--ink-body); }
+body.dark-mode .gallery-nav-button:hover { background-color: var(--bg-surface); border-color: var(--accent-gold); }
+.gallery-nav-button.prev { left: -22px; }
+.gallery-nav-button.next { right: -22px; }
+.gallery-grid { display: flex; flex-wrap: nowrap; gap: calc(var(--space-unit) * 3); padding: calc(var(--space-unit) * 1.5); }
+.gallery-item {
+  display: block; overflow: hidden; border-radius: var(--radius-sm); box-shadow: var(--shadow-soft);
+  transition: var(--transition); aspect-ratio: 16 / 10; border: 1px solid var(--border-color);
+  flex: 0 0 320px;
+}
+.gallery-item:hover { transform: scale(1.03); box-shadow: var(--shadow-medium); }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease-in-out; }
+.gallery-item:hover img { transform: scale(1.05); }
+
+.lightbox {
+  display: none; position: fixed; z-index: 2000; top: 0; left: 0; width: 100%; height: 100%;
+  background-color: rgba(33, 29, 28, 0.95); backdrop-filter: blur(8px);
+  justify-content: center; align-items: center;
+}
+.lightbox.active { display: flex; }
+.lightbox-content { position: relative; max-width: 90vw; max-height: 85vh; }
+.lightbox-image { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: var(--radius-sm); box-shadow: 0 10px 40px rgba(0,0,0,0.3); }
+.lightbox-close { position: absolute; top: 20px; right: 35px; color: var(--bg-canvas); font-size: 40px; font-weight: bold; cursor: pointer; transition: color 0.3s; }
+.lightbox-close:hover { color: var(--accent-gold); }
+.lightbox-prev, .lightbox-next { cursor: pointer; position: absolute; top: 50%; transform: translateY(-50%); width: auto; padding: 16px; color: var(--bg-canvas); font-weight: bold; font-size: 24px; transition: background-color 0.3s; user-select: none; }
+.lightbox-prev { left: 0; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
+.lightbox-next { right: 0; border-radius: var(--radius-sm) 0 0 var(--radius-sm); }
+.lightbox-prev:hover, .lightbox-next:hover { background-color: rgba(64, 42, 36, 0.5); }
+
+/* =========================================================
+   APPENDED CODE FOR REDESIGNED IMPACT BAR
+   ========================================================= */
+.impact-bar {
+  display: flex; background-color: var(--bg-surface); border-radius: var(--radius);
+  box-shadow: var(--shadow-soft); border: 1px solid var(--border-color);
+  max-width: 1100px; margin: 0 auto; overflow: hidden;
+}
+.impact-item {
+  flex: 1; padding: calc(var(--space-unit) * 4) calc(var(--space-unit) * 2); text-align: center;
+  text-decoration: none; color: var(--ink-body); border-right: 1px solid var(--border-color);
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+.impact-item:last-child { border-right: none; }
+.impact-item:hover {
+  background-color: var(--bg-section);
+  box-shadow: inset 0 -2px 0 0 var(--accent-gold);
+}
+.impact-number {
+  display: block; font-family: var(--font-heading); font-size: clamp(2rem, 1.8vw + 1.6rem, 2.8rem);
+  color: var(--ink-heading); font-weight: 700; line-height: 1.1;
+}
+.impact-label { display: block; color: var(--ink-muted); font-size: 0.95rem; margin-top: calc(var(--space-unit) * 0.5); }
+
+/* ---------------------------
+   9. Responsive Design
+----------------------------*/
+@media (max-width: 920px) {
+  .about-two-col { /* This rule is intentionally left empty to override the mobile-first approach */ }
+}
+@media (max-width: 768px) {
+  .about-two-col { flex-direction: column; text-align: center; }
+  .nav-brand img { max-height: 40px; }
+  .timeline::after { left: 20px; }
+  .timeline-item { width: 100%; padding-left: 55px; padding-right: 15px; }
+  .timeline-item:nth-child(odd), .timeline-item:nth-child(even) { left: 0; text-align: left; }
+  .timeline-item::after, .timeline-item:nth-child(even)::after { left: 12px; }
+  .impact-bar { flex-direction: column; }
+  .impact-item { border-right: none; border-bottom: 1px solid var(--border-color); }
+  .impact-item:last-child { border-bottom: none; }
+}
+
+/* =========================================
+   APPENDED CODE FOR DARK MODE
+   ========================================= */
+body.dark-mode {
+  --bg-canvas: #211D1C; --bg-section: #2B2624; --bg-surface: #352F2D;
+  --ink-heading: #F5F1E9; --ink-body: #D1C9C1; --ink-muted: #9A8F8A;
+  --accent-gold: #D4A24E; --accent-gold-deep: #E0B465; --accent-teal: #4E9A9F;
+  --border-color: #4A413D; --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+body { transition: background-color 0.3s ease, color 0.3s ease; }
+body.dark-mode .nav { background-color: rgba(33, 29, 28, 0.8); }
+body.dark-mode .nav-brand img { filter: invert(1) brightness(1.5) contrast(1.1); }
+body.dark-mode.nav-open .nav-links::before { filter: invert(1) brightness(1.5) contrast(1.1); }
+.nav-actions { display: flex; align-items: center; gap: calc(var(--space-unit) * 1); }
+.dark-mode-toggle {
+  background: none; border: none; cursor: pointer; color: var(--ink-muted);
+  padding: 6px; border-radius: 50%; display: flex; align-items: center;
+  justify-content: center; transition: color 0.3s, background-color 0.3s;
+}
+.dark-mode-toggle:hover { color: var(--ink-heading); background-color: var(--bg-section); }
+.dark-mode-toggle svg { width: 22px; height: 22px; }
+.dark-mode-toggle .sun { display: none; }
+.dark-mode-toggle .moon { display: block; }
+body.dark-mode .dark-mode-toggle .sun { display: block; }
+body.dark-mode .dark-mode-toggle .moon { display: none; }
+body.dark-mode .dark-mode-toggle { color: var(--ink-body); }
+body.dark-mode footer { background: #1c1817; }
+body.dark-mode .footer-nav a { color: #F5F1E9; }
+body.dark-mode .footer-contact p,
+body.dark-mode .footer-bottom small,
+body.dark-mode .footer-bottom a { color: #8C7D78; }
+body.dark-mode .footer-nav a:hover,
+body.dark-mode .footer-bottom a:hover { color: #D4A24E; }
+
+/* Dark mode fix for lightbox controls */
+body.dark-mode .lightbox-close,
+body.dark-mode .lightbox-prev,
+body.dark-mode .lightbox-next { color: var(--ink-heading); }
+body.dark-mode .lightbox-prev:hover,
+body.dark-mode .lightbox-next:hover { background-color: rgba(245, 241, 233, 0.1); }
+
+/* =========================================
+   APPENDED CODE FOR SCHOLAR'S LIBRARY
+   ========================================= */
+#scholar-library { background-color: var(--bg-canvas); }
+.library-tabs { display: flex; justify-content: center; gap: var(--space-unit); margin-bottom: calc(var(--space-unit) * 5); }
+.tab-button {
+  font-family: var(--font-body); font-weight: 500; font-size: 1rem;
+  padding: calc(var(--space-unit) * 1.5) calc(var(--space-unit) * 3);
+  border: 1px solid var(--border-color); background-color: transparent;
+  color: var(--ink-muted); border-radius: var(--radius-sm); cursor: pointer;
+  transition: var(--transition);
+}
+.tab-button:hover { color: var(--ink-heading); background-color: var(--bg-section); }
+.tab-button.active { color: var(--bg-surface); background-color: var(--accent-gold); border-color: var(--accent-gold); }
+.tab-pane { display: none; }
+.tab-pane.active { display: block; }
+.patent-card { border-left-color: var(--accent-gold); text-align: center; }
+.patent-card h3 { margin-bottom: var(--space-unit); }
+.patent-card p { font-size: 1.1rem; font-weight: 500; color: var(--ink-body); }
+.patent-card small { color: var(--ink-muted); }
+.patent-card a { text-decoration: none; color: var(--accent-gold-deep); }
+.patent-card a:hover { text-decoration: underline; }
+.filter-section { margin-bottom: calc(var(--space-unit) * 4); }
+.filter-section label { color: var(--ink-body); margin-right: var(--space-unit); font-weight: 500; }
+.filter-section select {
+  font-family: var(--font-body); font-size: 1rem; padding: var(--space-unit);
+  border-radius: var(--radius-sm); border: 1px solid var(--border-color);
+  background-color: var(--bg-surface); color: var(--ink-body);
+}
+.filter-section select:focus { outline-color: var(--accent-gold); }
+.research-category {
+  text-align: left; padding: calc(var(--space-unit) * 3); background-color: var(--bg-section);
+  border: 1px solid var(--border-color); border-radius: var(--radius);
+  margin-bottom: calc(var(--space-unit) * 3);
+}
+.research-category h4 {
+  font-size: 1.5rem; color: var(--ink-heading); margin-bottom: calc(var(--space-unit) * 2);
+  padding-bottom: var(--space-unit); border-bottom: 2px solid var(--border-color);
+}
+.papers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: calc(var(--space-unit) * 2); }
+.paper-card { background: var(--bg-canvas); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: calc(var(--space-unit) * 2); transition: var(--transition); }
+.paper-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-soft); border-color: var(--accent-gold); }
+.paper-card h5 { font-family: var(--font-body); font-size: 1.05rem; font-weight: 500; color: var(--ink-body); line-height: 1.4; margin: 0 0 4px 0; }
+.paper-card p { font-size: 0.9rem; color: var(--ink-muted); line-height: 1.3; margin: 0; }
+
+/* =========================================
+   APPENDED CODE FOR ACADEMIC LEGACY IMAGE
+   ========================================= */
+.legacy-grid { display: flex; align-items: center; gap: calc(var(--space-unit) * 6); text-align: left; }
+.legacy-image { flex: 0 0 40%; min-width: 300px; }
+.legacy-image img { width: 100%; border-radius: var(--radius); box-shadow: var(--shadow-soft); border: 1px solid var(--border-color); }
+.legacy-text { flex: 1; }
+.legacy-text p:last-child { margin-bottom: 0; }
+@media (max-width: 768px) {
+  .legacy-grid { flex-direction: column; text-align: center; gap: calc(var(--space-unit) * 4); }
+  .legacy-image { max-width: 400px; margin: 0 auto; }
+}
+/* ====================================================================
+   APPENDED CODE FOR LEGACY QUOTE (OVERLAY VERSION 2.0)
+   ==================================================================== */
+.legacy-image figure { position: relative; margin: 0; padding: 0; overflow: hidden; border-radius: var(--radius); line-height: 0; }
+.legacy-image figcaption {
+  position: absolute; bottom: 0; left: 0; width: 100%;
+  background-color: rgba(64, 42, 36, 0.3); color: #FDFCF9;
+  -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+  padding: calc(var(--space-unit) * 0.6) calc(var(--space-unit) * 2);
+  text-align: center; font-size: 0.90rem; font-style: italic; line-height: 1.2;
+  transition: background-color 0.3s ease-in-out;
+}
+.legacy-image figure:hover figcaption { background-color: rgba(64, 42, 36, 0.9); }
+.legacy-image figcaption cite { display: block; margin-top: calc(var(--space-unit)); font-style: normal; font-weight: 500; opacity: 0.9; }
+
+/* =========================================
+   APPENDED CODE FOR SHARE YOUR MEMORY SECTION
+   ========================================= */
+#share-memory { background-color: var(--bg-section); }
+.cta-button {
+  display: inline-block; background-color: var(--accent-gold); color: var(--bg-surface);
+  padding: calc(var(--space-unit) * 1.5) calc(var(--space-unit) * 4);
+  border-radius: var(--radius-sm); text-decoration: none; font-weight: 500;
+  font-size: 1.05rem; box-shadow: var(--shadow-soft); transition: var(--transition);
+}
+.cta-button:hover { background-color: var(--accent-gold-deep); transform: translateY(-3px); box-shadow: var(--shadow-medium); }
+body.dark-mode .cta-button { color: var(--ink-heading); }
+
+/* =========================================
+   APPENDED CODE FOR CONSOLIDATED TRIBUTE SECTION
+   ========================================= */
+.featured-tribute {
+  max-width: 1200px; margin: 0 auto; text-align: center; background-color: var(--bg-canvas);
+  border: 1px solid var(--border-color); border-radius: var(--radius);
+  padding: calc(var(--space-unit) * 4);
+}
+.featured-tribute h3 { font-size: var(--h3); color: var(--ink-heading); margin-bottom: calc(var(--space-unit) * 2); }
+.featured-tribute p { font-style: italic; font-size: 1.1rem; line-height: 1.8; color: var(--ink-body); margin-bottom: calc(var(--space-unit) * 2); }
+.featured-tribute cite { display: block; text-align: right; font-style: normal; font-weight: 500; color: var(--ink-muted); }
+.tribute-divider { border: 0; height: 1px; background-color: var(--border-color); max-width: 200px; margin: calc(var(--space-unit) * 6) auto; }
+.memory-cta h2 { display: inline-block; }
+
+/* =========================================
+   APPENDED CODE FOR SECTION DIVIDER
+   ========================================= */
+.about-two-col {
+  display: flex; gap: calc(var(--space-unit) * 6); align-items: flex-start;
+  text-align: left; margin-bottom: calc(var(--space-unit) * 8);
+}
+#journey .journey-grid + h2 { margin-top: calc(var(--space-unit) * 8); }
+#research { padding-bottom: calc(var(--space-unit) * 6); }
+#scholar-library { padding-top: calc(var(--space-unit) * 4); }
+.papers-container .research-category { display: none; }
+.filter-status {
+  margin-top: calc(var(--space-unit) * 3); color: var(--ink-muted); font-style: italic;
+  opacity: 0; max-height: 0; overflow: hidden;
+  transition: opacity 0.3s ease-in-out, max-height 0.3s ease-in-out, margin-top 0.3s ease-in-out;
+}
+.filter-status.visible { opacity: 1; max-height: 100px; }
+.filter-status strong { color: var(--ink-body); font-weight: 500; }
+
+/* ====================================================================
+   APPENDED CODE FOR DIGITAL FOOTPRINT & ABOUT ARCHIVE SECTIONS
+   ==================================================================== */
+.footprint-grid .card {
+  width: 100%; height: 100%; text-align: center; border-left-color: var(--accent-gold); 
+  display: flex; flex-direction: column; justify-content: center;
+}
+.card-link:hover .footprint-icon svg { color: var(--accent-gold-deep); }
+.footprint-grid .card h3 { font-size: 1.25rem; margin-bottom: calc(var(--space-unit) * 1.5); }
+.footprint-grid .card p { color: var(--ink-muted); line-height: 1.6; font-size: 1rem; margin-bottom: 0; }
+
+/* ====================================================================
+   APPENDED CODE FOR FINAL LAYOUT REFINEMENTS (RELIABLE PRE-COLORED PNGS)
+   ==================================================================== */
+.footprint-block { margin-top: calc(var(--space-unit) * 8); padding-top: calc(var(--space-unit) * 6); border-top: 1px solid var(--border-color); }
+.footprint-heading { font-size: var(--h3); color: var(--ink-muted); margin-bottom: calc(var(--space-unit) * 4); text-align: center; }
+.logo-grid { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: calc(var(--space-unit) * 5); }
+.logo-item { display: block; }
+.logo-item img { width: 48px; height: 48px; object-fit: contain; opacity: 0.90; transition: var(--transition); }
+.logo-item:hover img { opacity: 1; transform: scale(1.5); }
+#tributes-archive { background-color: var(--bg-section); }
+#tributes-archive .island-box { background: var(--bg-canvas); margin-top: calc(var(--space-unit) * 3); margin-bottom: calc(var(--space-unit) * 6); }
+.featured-tribute.island-box { max-width: 850px; }
+
+/* ====================================================================
+   APPENDED CODE FOR TRIBUTES SECTION SPACING (FINAL FIX)
+   ==================================================================== */
+#tributes-archive > .container > p { margin-bottom: 0; }
+#tributes-archive .island-box { background: var(--bg-canvas); margin-top: calc(var(--space-unit) * 4); margin-bottom: calc(var(--space-unit) * 6); }
+
+/* ====================================================================
+   APPENDED CODE FOR TRIBUTES/ARCHIVE SPACING (FINAL FIX)
+   ==================================================================== */
+#tributes-archive { padding-bottom: calc(var(--space-unit) * 9); }
+#share-memory { padding-top: calc(var(--space-unit) * 2); }
+#share-memory .island-box { background: var(--bg-canvas); margin-top: calc(var(--space-unit) * 6); margin-bottom: calc(var(--space-unit) * 6); }
+
+/* ====================================================================
+   MOBILE OVERFLOW & LAYOUT FIXES
+   ==================================================================== */
+
+/* 1. Add a global safety net to prevent any horizontal scrolling. */
+html {
+  overflow-x: hidden;
+}
+
+/* 2. Reposition the gallery arrows on mobile to keep them inside the viewport. */
+@media (max-width: 768px) {
+  .gallery-nav-button.prev {
+    left: 10px; /* Was -22px, now safely inside. */
+  }
+  .gallery-nav-button.next {
+    right: 10px; /* Was -22px, now safely inside. */
+  }
+}
