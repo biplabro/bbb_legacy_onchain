@@ -51,7 +51,7 @@ This is a **fully client-side application with zero external dependencies**, mak
 
 - **IPFS:** For decentralized and permanent file storage.
 
-- **Polygon:** The blockchain that powers the .onchain domain identity.
+- **Base Blockchain (by CoinBase):** The blockchain that powers the .onchain domain identity.
 
 ## Getting Started (Local Development)
 
