@@ -111,4 +111,4 @@ Some potential areas for contribution:
 
 ## License
 
-This project is licensed under the [GPL v3.0]([bbb_legacy_onchain/LICENSE at main · biplabro/bbb_legacy_onchain · GitHub](https://github.com/biplabro/bbb_legacy_onchain/blob/main/LICENSE)).
+This project is licensed under the [GPL v3.0](https://github.com/biplabro/bbb_legacy_onchain/blob/main/LICENSE).
