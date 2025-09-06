@@ -8,8 +8,9 @@ A permanent, decentralized digital archive and tribute celebrating the four-deca
 
 This project lives as a decentralized application, accessible via its blockchain domain **[bbblegacy.onchain](https://www.google.com/url?sa=E&q=https%3A%2F%2Fbbblegacy.onchain)** and permanently stored on the **InterPlanetary File System (IPFS)**.
 
-- **Live IPFS Gateway Link:** https://ipfs.io/ipfs/bafybeiaaj3dvrzhdjwexgmkzlq2t4mlevqjzporrkchvubk5nih5ixxkay/
+- **Live IPFS Gateway Link:** https://ipfs.io/ipfs/bafybeie4uikkxxx6t6ypiuiukclevz5jrh3325wu2lzugfaol3zdwqt72e/
 - **Previous Versions:**
+  - https://ipfs.io/ipfs/bafybeiaaj3dvrzhdjwexgmkzlq2t4mlevqjzporrkchvubk5nih5ixxkay/
   - https://ipfs.io/ipfs/bafybeidbxei27trk7vtmbqtldww67zzab4cv3acdprdep4spv56zzxtw7y/
   - https://ipfs.io/ipfs/bafybeicisfwrpr4fv46jms5ogwer4oe5ndpg53opixuuxbyl4bcpwlwcpy/
 
