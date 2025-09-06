@@ -613,7 +613,7 @@ body.dark-mode .lightbox-next:hover { background-color: rgba(245, 241, 233, 0.1)
   border-radius: var(--radius-sm); text-decoration: none; font-weight: 500;
   font-size: 1.05rem; box-shadow: var(--shadow-soft); transition: var(--transition);
 }
-.cta-button:hover { background-color: var(--accent-gold-deep); transform: translateY(-3px); box-shadow: var(--shadow-medium); }
+.cta-button:hover { background-color: var(--accent-gold-deep); transform: translateY(-3px); box-shadow: var(--shadow-medium); color: var(--bg-surface) !important;}
 body.dark-mode .cta-button { color: var(--ink-heading); }
 
 /* =========================================
