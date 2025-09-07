@@ -4,7 +4,7 @@
 
 
 
-A permanent, decentralized digital archive and tribute celebrating the four-decade career, groundbreaking research, and profound mentorship of **Prof. Bhargab B. Bhattacharya**.
+A permanent, decentralized digital archive and tribute celebrating the five-decade career, groundbreaking research, and profound mentorship of **Prof. Bhargab B. Bhattacharya**.
 
 This project lives as a decentralized application, accessible via its blockchain domain **[bbblegacy.onchain](https://www.google.com/url?sa=E&q=https%3A%2F%2Fbbblegacy.onchain)** and permanently stored on the **InterPlanetary File System (IPFS)**.
 
