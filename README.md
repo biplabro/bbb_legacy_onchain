@@ -6,7 +6,7 @@
 
 A permanent, decentralized digital archive and tribute celebrating the five-decade career, groundbreaking research, and profound mentorship of **Prof. Bhargab B. Bhattacharya**.
 
-This project lives as a decentralized application, accessible via its blockchain domain (Web3) **[bbblegacy.onchain](bbblegacy.onchain)** and permanently stored on the **InterPlanetary File System (IPFS)**. The web3 domain can be accessed using [**Brave** browser](https://brave.com/), which supports blockchain domains natively, allowing access via web3-based name resolution. Alternatively IPFS gateways can also be used to view the same version of the website from Chrome or Firefox.
+This project lives as a decentralized application, accessible via its blockchain domain (Web3) **[bbblegacy.onchain](https://bbblegacy.onchain)** and permanently stored on the **InterPlanetary File System (IPFS)**. The web3 domain can be accessed using [**Brave** browser](https://brave.com/), which supports blockchain domains natively, allowing access via web3-based name resolution. Alternatively IPFS gateways can also be used to view the same version of the website from Chrome or Firefox.
 
 - **Live IPFS Gateway Link:** v1.6: https://ipfs.io/ipfs/bafybeiel4ocen7qn4stg4t4nwxvaif5ppbnmwnxkcaqqyc6babji3kkilu/index.html
 
