@@ -8,9 +8,10 @@ A permanent, decentralized digital archive and tribute celebrating the five-deca
 
 This project lives as a decentralized application, accessible via its blockchain domain **[bbblegacy.onchain](https://www.google.com/url?sa=E&q=https%3A%2F%2Fbbblegacy.onchain)** and permanently stored on the **InterPlanetary File System (IPFS)**.
 
-- **Live IPFS Gateway Link:** v1.5: https://ipfs.io/ipfs/bafybeic2nuu2it6ah53pgmfpv4yvhzojlcbwh5u6fecn744i4jkwjnsxdu/index.html
+- **Live IPFS Gateway Link:** v1.6: https://ipfs.io/ipfs/bafybeiel4ocen7qn4stg4t4nwxvaif5ppbnmwnxkcaqqyc6babji3kkilu/index.html
 
 - **Previous Versions:**
+  - v1.5: https://ipfs.io/ipfs/bafybeic2nuu2it6ah53pgmfpv4yvhzojlcbwh5u6fecn744i4jkwjnsxdu/index.html
   - v1.4: https://ipfs.io/ipfs/bafybeicfsduu2ebizkxn6vprd6yhkah6pvr3nxjrko2ab5fi3echxa6nfm/index.html
   - v1.3: https://ipfs.io/ipfs/bafybeify546mxxrhpgnybycvchj2gkjn4y2n7mestpe7nzn57na2qxaan4/index.html
   - v1.2: https://ipfs.io/ipfs/bafybeie4uikkxxx6t6ypiuiukclevz5jrh3325wu2lzugfaol3zdwqt72e/index.html
@@ -19,7 +20,7 @@ This project lives as a decentralized application, accessible via its blockchain
 
 The web link can be accessed through any desktop browser like **firefox/chrome/edge** etc.
 
-the blockchain domain [bbblegacy.onchain](bbblegacy.onchain) can be accessed using **Brave** browser (Desktop Version) that allows web3 DNS out-of-the-box. 
+the blockchain domain [bbblegacy.onchain](bbblegacy.onchain) can be accessed using **Brave** browser (Desktop Version), which supports Web3 domains natively, allowing access via blockchain-based name resolution. 
 
 ## A Note on the Development Philosophy
 
