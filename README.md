@@ -6,7 +6,7 @@
 
 A permanent, decentralized digital archive and tribute celebrating the five-decade career, groundbreaking research, and profound mentorship of **Prof. Bhargab B. Bhattacharya**.
 
-This project lives as a decentralized application, accessible via its blockchain domain **[bbblegacy.onchain](https://www.google.com/url?sa=E&q=https%3A%2F%2Fbbblegacy.onchain)** and permanently stored on the **InterPlanetary File System (IPFS)**.
+This project lives as a decentralized application, accessible via its blockchain domain (Web3) **[bbblegacy.onchain](bbblegacy.onchain)** and permanently stored on the **InterPlanetary File System (IPFS)**. The web3 domain can be accessed using **Brave** browser (Desktop Version), which supports blockchain domains natively, allowing access via web3-based name resolution. Alternatively IPFS gateways can also be used to view the same version of the website from Chrome or Firefox.
 
 - **Live IPFS Gateway Link:** v1.6: https://ipfs.io/ipfs/bafybeiel4ocen7qn4stg4t4nwxvaif5ppbnmwnxkcaqqyc6babji3kkilu/index.html
 
@@ -18,9 +18,9 @@ This project lives as a decentralized application, accessible via its blockchain
   - v1.1: https://ipfs.io/ipfs/bafybeiaaj3dvrzhdjwexgmkzlq2t4mlevqjzporrkchvubk5nih5ixxkay/index.html
   - v1.0: https://ipfs.io/ipfs/bafybeidbxei27trk7vtmbqtldww67zzab4cv3acdprdep4spv56zzxtw7y/index.html
 
-The web link can be accessed through any desktop browser like **firefox/chrome/edge** etc.
-
-the blockchain domain [bbblegacy.onchain](bbblegacy.onchain) can be accessed using **Brave** browser (Desktop Version), which supports Web3 domains natively, allowing access via blockchain-based name resolution. 
+- **Alternate IPFS Gateways:**
+  - https://ipfs.infura.io/ipfs/{HASH}
+  - https://ipfs.fleek.co/ipfs/{HASH}
 
 ## A Note on the Development Philosophy
 
