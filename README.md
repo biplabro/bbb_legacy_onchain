@@ -2,15 +2,24 @@
 
 ![alt text](./site.png)
 
+This project is a permanent, decentralized digital tribute honoring the five-decade legacy of Prof. Bhargab B. Bhattacharya, his pioneering research, impactful contributions, and profound mentorship.
 
+Built on **emerging Web3 technologies**, the archive is more than a website. It is a living, resilient application designed to outlast traditional hosting. The entire project is permanently stored on the **InterPlanetary File System (IPFS)**, ensuring immutability and accessibility across a distributed peer-to-peer network. At the same time, its dedicated blockchain domain, **bbblegacy.onchain**, provides a human-readable Web3 identity that always points to the latest version of the archive.
 
-A permanent, decentralized digital archive and tribute celebrating the five-decade career, groundbreaking research, and profound mentorship of **Prof. Bhargab B. Bhattacharya**.
+Access is simple and flexible:
 
-This project lives as a decentralized application, accessible via its blockchain domain (Web3) **[bbblegacy.onchain](https://bbblegacy.onchain)** and permanently stored on the **InterPlanetary File System (IPFS)**. The web3 domain can be accessed using [**Brave** browser](https://brave.com/), which supports blockchain domains natively, allowing access via web3-based name resolution. Alternatively IPFS gateways can also be used to view the same version of the website from Chrome or Firefox.
+- Through the **Brave browser**, which natively supports blockchain domains for Web3 DNS resolution.
 
-- **Live IPFS Gateway Link:** v1.6: https://ipfs.io/ipfs/bafybeiel4ocen7qn4stg4t4nwxvaif5ppbnmwnxkcaqqyc6babji3kkilu/index.html
+- Or via **IPFS gateways** (e.g., ipfs.io, Infura, Fleek), allowing seamless viewing from Chrome, Firefox, and other Web2 browsers.
+
+In spirit and in technology, this archive represents both the permanence of Professor Bhattacharya’s legacy and the forward-looking nature of the tools chosen to preserve it. By combining **AI assisted coding** **IPFS for storage** and **Blockchain for addressing**, the project demonstrates how emerging & decentralized technologies can serve meaningful cultural and academic preservation.
+
+- **Blockchain Domain:** (Accessible through Brave browser): [bbblegacy.onchain](https://bbblegacy.onchain)
+
+- **Live IPFS Gateway Link:** v1.6: [Prof. Bhargab B. Bhattacharya - A Tribute to Excellence](https://ipfs.io/ipfs/bafybeiel4ocen7qn4stg4t4nwxvaif5ppbnmwnxkcaqqyc6babji3kkilu/index.html)
 
 - **Previous Versions:**
+  
   - v1.5: https://ipfs.io/ipfs/bafybeic2nuu2it6ah53pgmfpv4yvhzojlcbwh5u6fecn744i4jkwjnsxdu/index.html
   - v1.4: https://ipfs.io/ipfs/bafybeicfsduu2ebizkxn6vprd6yhkah6pvr3nxjrko2ab5fi3echxa6nfm/index.html
   - v1.3: https://ipfs.io/ipfs/bafybeify546mxxrhpgnybycvchj2gkjn4y2n7mestpe7nzn57na2qxaan4/index.html
@@ -19,6 +28,7 @@ This project lives as a decentralized application, accessible via its blockchain
   - v1.0: https://ipfs.io/ipfs/bafybeidbxei27trk7vtmbqtldww67zzab4cv3acdprdep4spv56zzxtw7y/index.html
 
 - **Alternate IPFS Gateways:**
+  
   - https://ipfs.infura.io/ipfs/{HASH}
   - https://ipfs.fleek.co/ipfs/{HASH}
 
