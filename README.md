@@ -2,7 +2,7 @@
 
 ![alt text](./site.png)
 
-This project is a permanent, decentralized digital tribute honoring the five-decade legacy of Prof. Bhargab B. Bhattacharya, his pioneering research, impactful contributions, and profound mentorship.
+This project is a permanent, decentralized digital tribute honoring the five-decade legacy of [Prof. Bhargab B. Bhattacharya](https://www.researchgate.net/profile/Bhargab-Bhattacharya), his pioneering research, impactful contributions, and profound mentorship.
 
 Built on **emerging Web3 technologies**, the archive is more than a website. It is a living, resilient application designed to outlast traditional hosting. The entire project is permanently stored on the **InterPlanetary File System (IPFS)**, ensuring immutability and accessibility across a distributed peer-to-peer network. At the same time, its dedicated blockchain domain, **bbblegacy.onchain**, provides a human-readable Web3 identity that always points to the latest version of the archive.
 
